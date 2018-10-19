@@ -1,5 +1,7 @@
 # Juno - a desktop app for Jupyter
 
+[Latest Release](https://github.com/phildini/juno/releases)
+
 Juno is a desktop app (currently only macOS) that opens Jupyter Notebooks
 (.ipynb files) as a standalone app. No need to install python, conda, or jupyter.
 
