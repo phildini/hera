@@ -12,16 +12,15 @@ class Notebook(toga.Document):
     def __init__(self, filename, app):
         super().__init__(filename=filename, document_type='Jupyter Notebook', app=app)
 
-        self.window = toga.Window(title=filename)
+        self.window = toga.Window(title=filename, size=(768,768))
         self.window.on_close = self.close_window
         self.webview = toga.WebView(style=Pack(flex=1))
         self.window.content = self.webview
 
-    def close_window(self, widget, **kwargs):
+    def close_window(self):
         self.proc.kill()
 
     def read(self):
-        print(self.filename)
         asyncio.ensure_future(self.start_jupyter(self.filename))
 
     def show(self):
@@ -36,7 +35,6 @@ class Notebook(toga.Document):
             stdin=None,
             stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE,
         )
-        print("starting")
         line = await self.proc.stderr.readline()
         while line:
             line = line.strip().decode('utf-8')
@@ -53,8 +51,8 @@ class Juno(toga.DocumentApp):
         resource_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
         super().__init__(
             'Juno',
-            app_id='org.juno.Juno',
-            icon=toga.Icon(os.path.join(resource_dir, 'juno.icns')),
+            app_id='net.phildini.Juno',
+            icon=toga.Icon(os.path.join(resource_dir, 'Juno.icns')),
             document_types={'ipynb': Notebook},
         )
 

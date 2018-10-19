@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 jupyter = "*"
-toga = "*"
+toga = "==0.3.0.dev11"
 briefcase = "*"
 cookiecutter = "*"
 pathlib = "*"

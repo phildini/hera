@@ -24,6 +24,7 @@ setup(
     author='Philip James',
     author_email='phildini@phildini.net',
     license='Apache Software License',
+    include_package_data=True,
     packages=find_packages(
         exclude=[
             'docs', 'tests',
@@ -37,17 +38,20 @@ setup(
         'License :: OSI Approved :: Apache Software License',
     ],
     install_requires=[
+        'toga',
         'jupyter',
         'pathlib',
     ],
     options={
         'app': {
             'formal_name': 'Juno',
-            'bundle': 'com.juno',
+            'bundle': 'net.phildini',
             'document_types': {
                 'notebook': {
-                    'descritption': 'Jupyter Notebook',
+                    'description': 'Jupyter Notebook',
                     'extension': 'ipynb',
+                    'url': 'http://jupyter.org/',
+                    'icon': 'icons/JupyterDoc',
                 }
             }
         },
@@ -56,7 +60,8 @@ setup(
         'macos': {
             'app_requires': [
                 'toga-cocoa==0.3.0.dev11',
-            ]
+            ],
+            'icon': 'icons/Juno',
         },
         'linux': {
             'app_requires': [
