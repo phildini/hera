@@ -1,0 +1,69 @@
+import asyncio
+import subprocess
+import toga
+from toga.style.pack import Pack, ROW, CENTER, COLUMN
+import time
+import sys
+import os
+from pathlib import Path
+from urllib.parse import quote
+
+class Notebook(toga.Document):
+    def __init__(self, filename, app):
+        super().__init__(filename=filename, document_type='Jupyter Notebook', app=app)
+
+        self.window = toga.Window(title=filename)
+        self.window.on_close = self.close_window
+        self.webview = toga.WebView(style=Pack(flex=1))
+        self.window.content = self.webview
+
+    def close_window(self, widget, **kwargs):
+        self.proc.kill()
+
+    def read(self):
+        print(self.filename)
+        asyncio.ensure_future(self.start_jupyter(self.filename))
+
+    def show(self):
+        self.window.show()
+
+    async def start_jupyter(self, filename):
+        filename = Path(filename)
+        command = '{} -m notebook --NotebookApp.token="" --NotebookApp.open_browser=False --notebook-dir="{}"'.format(sys.executable, filename.parent)
+        print(command)
+        self.proc = await asyncio.create_subprocess_shell(
+            command,
+            stdin=None,
+            stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE,
+        )
+        print("starting")
+        line = await self.proc.stderr.readline()
+        while line:
+            line = line.strip().decode('utf-8')
+            if 'http' in line:
+                url = line.split(' ')[-1]
+                url = "{}notebooks/{}".format(url, quote(filename.name))
+                self.webview.url = url
+            line = await self.proc.stderr.readline()
+
+
+class Juno(toga.DocumentApp):
+
+    def __init__(self):
+        resource_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+        super().__init__(
+            'Juno',
+            app_id='org.juno.Juno',
+            icon=toga.Icon(os.path.join(resource_dir, 'juno.icns')),
+            document_types={'ipynb': Notebook},
+        )
+
+    def startup(self):
+        pass
+
+def main():
+    Juno().main_loop()
+
+
+if __name__ == '__main__':
+    main()
