@@ -4,7 +4,7 @@ import re
 from setuptools import setup, find_packages
 import sys
 
-with io.open('./juno/__init__.py', encoding='utf8') as version_file:
+with io.open('./hera/__init__.py', encoding='utf8') as version_file:
     version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", version_file.read(), re.M)
     if version_match:
         version = version_match.group(1)
@@ -17,7 +17,7 @@ with io.open('README.md', encoding='utf8') as readme:
 
 
 setup(
-    name='juno',
+    name='hera',
     version=version,
     description='A desktop app for Jupyter Notebook',
     long_description=long_description,
@@ -44,7 +44,7 @@ setup(
     ],
     options={
         'app': {
-            'formal_name': 'Juno',
+            'formal_name': 'Hera',
             'bundle': 'net.phildini',
             'document_types': {
                 'notebook': {
@@ -61,7 +61,7 @@ setup(
             'app_requires': [
                 'toga-cocoa==0.3.0.dev11',
             ],
-            'icon': 'icons/Juno',
+            'icon': 'icons/Hera',
         },
         'linux': {
             'app_requires': [

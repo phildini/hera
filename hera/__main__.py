@@ -1,4 +1,4 @@
-from juno.app import main
+from hera.app import main
 
 if __name__ == '__main__':
     main()

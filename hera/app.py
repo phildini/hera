@@ -45,14 +45,14 @@ class Notebook(toga.Document):
             line = await self.proc.stderr.readline()
 
 
-class Juno(toga.DocumentApp):
+class Hera(toga.DocumentApp):
 
     def __init__(self):
         resource_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
         super().__init__(
-            'Juno',
-            app_id='net.phildini.Juno',
-            icon=toga.Icon(os.path.join(resource_dir, 'Juno.icns')),
+            'Hera',
+            app_id='net.phildini.Hera',
+            icon=toga.Icon(os.path.join(resource_dir, 'Hera.icns')),
             document_types={'ipynb': Notebook},
         )
 
@@ -60,7 +60,7 @@ class Juno(toga.DocumentApp):
         pass
 
 def main():
-    Juno().main_loop()
+    Hera().main_loop()
 
 
 if __name__ == '__main__':

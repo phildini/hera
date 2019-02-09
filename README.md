@@ -1,13 +1,13 @@
-# Juno - a desktop app for Jupyter
+# Hera - a desktop app for Jupyter
 
-[Latest Release](https://github.com/phildini/juno/releases/latest)
+[Latest Release](https://github.com/phildini/hera/releases/latest)
 
-Juno is a desktop app (currently only macOS) that opens Jupyter Notebooks
+Hera is a desktop app (currently only macOS) that opens Jupyter Notebooks
 (.ipynb files) as a standalone app. No need to install python, conda, or jupyter.
 
 ## Some caveats
 
- - Right now, Juno only supports basic Jupyter. No addons or plugins (although 
+ - Right now, Hera only supports basic Jupyter. No addons or plugins (although 
    I'd love to to support more)
  - You might need to right-click on the app and select "Open" from the menu on 
    first run, since I haven't registered as a macOS developer yet.
