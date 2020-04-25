@@ -1,0 +1,6 @@
+Metadata-Version: 2.1
+Name: hera
+Formal-Name: Hera
+App-ID: com.phildini.hera
+Version: 0.1.2
+Summary: Running Jupyter notebooks locally

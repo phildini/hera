@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 jupyter = "*"
-toga = "==0.3.0.dev11"
+toga = "==0.3.0.dev19"
 briefcase = "*"
 cookiecutter = "*"
 pathlib = "*"
@@ -13,4 +13,4 @@ pathlib = "*"
 [dev-packages]
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"

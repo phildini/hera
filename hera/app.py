@@ -29,7 +29,6 @@ class Notebook(toga.Document):
     async def start_jupyter(self, filename):
         filename = Path(filename)
         command = '{} -m notebook --NotebookApp.token="" --NotebookApp.open_browser=False --notebook-dir="{}"'.format(sys.executable, filename.parent)
-        print(command)
         self.proc = await asyncio.create_subprocess_shell(
             command,
             stdin=None,
