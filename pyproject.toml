@@ -10,7 +10,7 @@ version = "0.1.2"
 formal_name = "Hera"
 description = "Running Jupyter notebooks locally"
 sources = ['hera']
-requires = ['jupyter']
+requires = ['jupyter', 'pip']
 
 [tool.briefcase.app.hera.macOS]
 requires = ['toga-cocoa==0.3.0.dev19']

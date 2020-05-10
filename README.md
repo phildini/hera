@@ -25,3 +25,6 @@ no need to install python, conda, or jupyter.
 
 **If you want to see more tools like Briefcase, please consider**
 [becoming a financial member of BeeWare](https://pybee.org/contributing/membership).
+
+# Developer Notes
+- Remember to `briefcase update -dr` after updating the pyproject.toml
