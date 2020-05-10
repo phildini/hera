@@ -5,6 +5,7 @@ requires = ["briefcase"]
 project_name = "Hera"
 bundle = "com.phildini"
 version = "0.1.2"
+icon = "icons/Hera"
 
 [tool.briefcase.app.hera]
 formal_name = "Hera"
@@ -14,3 +15,7 @@ requires = ['jupyter', 'pip']
 
 [tool.briefcase.app.hera.macOS]
 requires = ['toga-cocoa==0.3.0.dev19']
+
+[tool.briefcase.app.hera.document_type.ipynb]
+icon = "icons/JupyterDoc"
+description = "Jupyter Notbook"
