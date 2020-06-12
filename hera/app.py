@@ -8,6 +8,19 @@ import os
 from pathlib import Path
 from urllib.parse import quote
 
+def install_dependencies(*args, **kwargs):
+    print("Command called")
+    import subprocess
+    subprocess.call("pip install numpy", shell=True)
+    print("Success")
+    # stdout, stderr = await proc.communicate()
+
+    # print(f'[{cmd!r} exited with {proc.returncode}]')
+    # if stdout:
+    #     print(f'[stdout]\n{stdout.decode()}')
+    # if stderr:
+    #     print(f'[stderr]\n{stderr.decode()}')
+
 class Notebook(toga.Document):
     def __init__(self, filename, app):
         super().__init__(filename=filename, document_type='Jupyter Notebook', app=app)
@@ -50,10 +63,24 @@ class Hera(toga.DocumentApp):
         resource_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
         super().__init__(
             'Hera',
-            app_id='net.phildini.Hera',
-            icon=toga.Icon(os.path.join(resource_dir, 'Hera.icns')),
             document_types={'ipynb': Notebook},
         )
+        os.environ['PIP_TARGET'] = str(self.paths.data / 'pkgs')
+        sys.path.append(str(self.paths.data / 'pkgs'))
+        os.environ['PYTHONPATH'] += ':' + str(self.paths.data / 'pkgs')
+        print(os.environ['PYTHONPATH'])
+
+        cmd1 = toga.Command(
+            install_dependencies,
+            label='Install packages',
+            tooltip='Installs some helpful packages',
+            shortcut=toga.Key.MOD_1 + 'i',
+            icon='icons/pretty.png',
+            group=toga.Group.FILE,
+            section=0
+        )
+
+        self.commands.add(cmd1)
 
     def startup(self):
         pass

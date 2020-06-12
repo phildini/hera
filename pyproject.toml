@@ -19,3 +19,4 @@ requires = ['toga-cocoa==0.3.0.dev19']
 [tool.briefcase.app.hera.document_type.ipynb]
 icon = "icons/JupyterDoc"
 description = "Jupyter Notbook"
+url = "http://jupyter.org/"
